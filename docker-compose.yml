@@ -1,7 +1,7 @@
 version: '2'
 services:
   balticweb:
-    build: .
+    image: dmadk/balticweb
     links:
       - mysqldb:db
       - couchdb:couch
