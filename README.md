@@ -17,7 +17,7 @@ In the 'balticweb/properties' directory you should put the 'balticweb.properties
 
 It is recommended to also put the configuration files for Keycloak in the 'balticweb/properties' directory. In 'balticweb.properties' you should then override the default configuration with the following:
 
-	enav-service.keycloak.service-client.configuration.url=file:///opt/jboss/wildfly balticweb_properties/<path_to_first_file>/<your_first_file>.json
+	enav-service.keycloak.service-client.configuration.url=file:///opt/jboss/wildfly/balticweb_properties/<path_to_first_file>/<your_first_file>.json
 	enav-service.keycloak.web-client.configuration.url=file:///opt/jboss/wildfly/balticweb_properties/<path_to_second_file>/<your_second_file>.json
 
 
