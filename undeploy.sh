@@ -1,11 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 
-#stop all containers
 echo "Stopping containers"
 docker stop balticweb db couch
 
-#remove all containers
-echo "Removing containers"
-docker rm balticweb db couch
+full ()
+{
+    echo "Removing containers" && docker rm balticweb db couch && docker       network rm baltic
+}
 
-docker network rm baltic
+$1
+
+exit 0
