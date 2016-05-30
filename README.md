@@ -21,11 +21,12 @@ It is recommended to also put the configuration files for Keycloak in the 'balti
 	enav-service.keycloak.web-client.configuration.url=file:///opt/jboss/wildfly/balticweb_properties/<path_to_second_file>/<your_second_file>.json
 
 
-If you want to build the BalticWeb container yourself, but you only need to do this if you have a specific reason to do it 
+If you want to build the BalticWeb container yourself do the following, but you only need to do this if you have a specific reason to do it 
 
     $ docker build -t dmadk/balticweb .
 
-To start the balticweb container and the two databases execute the following command
+Currently there are two ways of starting the BalticWeb container and the two databases.
+The first is using Docker Compose. On the first startup do
     
     $ docker-compose up
 
@@ -36,3 +37,30 @@ On subsequent startups you can start with either
 Or
 
     $ docker-compose start
+
+To stop use either
+
+	$ docker-compose stop
+
+Or
+
+	$ docker-compose down
+
+The second way of starting is using the script deploy.sh which also makes a [WatchTower](https://github.com/CenturyLinkLabs/watchtower#watchtower) container which makes sure that you are always running the latest version of BalticWeb.
+On the first startup using this method do
+	
+	$ chmod +x deploy.sh
+	$ chmod +x undeploy.sh
+	$ ./deploy.sh full
+
+On subsequent startups do
+
+	$ ./deploy.sh
+
+When you want to stop the containers do
+
+	$ ./undeploy.sh
+
+If you want to remove the containers after they have been stopped do
+
+	$ ./undeploy.sh full
