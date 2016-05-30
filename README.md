@@ -61,6 +61,6 @@ When you want to stop the containers do
 
 	$ ./undeploy.sh
 
-If you want to remove the containers after they have been stopped do
+If you want to stop the containers and then remove them do
 
 	$ ./undeploy.sh full
