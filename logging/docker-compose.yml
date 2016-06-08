@@ -2,8 +2,6 @@ version: '2'
 services:
   elasticsearch:
     image: elasticsearch:latest
-    ports:
-      - '9200:9200'
     volumes:
       - ~$USER/elasticsearch:/usr/share/elasticsearch/data
   fluentd:
