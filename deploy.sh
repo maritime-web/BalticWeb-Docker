@@ -26,7 +26,7 @@ full () {
 
     docker create --name watchtower --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.sock centurylink/watchtower balticweb
 
-    docker create --name nginx --net=baltic --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -v $HOME/nginx/conf.d:/etc/nginx/conf.d -p 443:443 nginx:stable
+    docker create --name nginx --net=baltic --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -v $HOME/nginx/conf.d:/etc/nginx/conf.d -p 443:443 -p 80:80 nginx:stable
 }
 
 $1
