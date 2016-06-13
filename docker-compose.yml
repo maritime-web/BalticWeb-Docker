@@ -5,14 +5,14 @@ services:
     links:
       - mysqldb:db
       - couchdb:couch
-    ports: 
+    ports:
       - "8080:8080"
-      - "8443:8443"
+      #- "8443:8443"
       #- "9990:9990"
-    depends_on: 
+    depends_on:
       - mysqldb
       - couchdb
-    volumes: 
+    volumes:
       - ~$USER/balticweb/properties:/opt/jboss/wildfly/balticweb_properties
   mysqldb:
     image: mysql
@@ -25,4 +25,3 @@ services:
     image: dmadk/embryo-couchdb
     volumes:
       - ~$USER/balticweb/couchdb:/data
-

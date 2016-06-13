@@ -4,15 +4,28 @@ services:
     image: elasticsearch:latest
     volumes:
       - ~$USER/elasticsearch:/usr/share/elasticsearch/data
+    networks:
+      - logger
   fluentd:
     build: fluentd/
     links:
       - elasticsearch
     ports:
       - '24224:24224'
+    networks:
+      - logger
   kibana:
     image: kibana:latest
     links:
       - elasticsearch
-    ports:
-      - '5601:5601'
+    #ports:
+    #  - '5601:5601'
+    networks:
+      - baltic
+      - logger
+
+networks:
+  baltic:
+    external: true
+  logger:
+    driver: bridge
