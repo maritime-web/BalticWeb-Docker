@@ -1,5 +1,6 @@
 # BalticWeb Docker
-A dockerized container for the BalticWeb project. The container deploys the latest successful build of BalticWeb on a Wildfly 8.2.0 web server. It also has the required CouchDB and MySQL as described in the [BalticWeb](https://github.com/maritime-web/BalticWeb#balticweb) guide. 
+A dockerized container for the BalticWeb project. The container deploys the latest successful build of BalticWeb on a Wildfly 8.2.0 web server. It also has the required CouchDB and MySQL as described in the [BalticWeb](https://github.com/maritime-web/BalticWeb#balticweb) guide.
+Apart from that this branch uses containers for the EFK stack ([Elasticsearch](https://www.elastic.co/products/elasticsearch), [Fluentd](http://www.fluentd.org/) and [Kibana](https://www.elastic.co/products/kibana)) for centralized logging and NGINX for reverse proxying.
 
 ## Prerequisties
 * Docker 1.10.0+
@@ -21,13 +22,13 @@ It is recommended to also put the configuration files for Keycloak in the 'balti
 	enav-service.keycloak.web-client.configuration.url=file:///opt/jboss/wildfly/balticweb_properties/<path_to_second_file>/<your_second_file>.json
 
 
-If you want to build the BalticWeb container yourself do the following, but you only need to do this if you have a specific reason to do it 
+If you want to build the BalticWeb container yourself do the following, but you only need to do this if you have a specific reason to do it
 
     $ docker build -t dmadk/balticweb .
 
 Currently there are two ways of starting the BalticWeb container and the two databases.
 The first is using Docker Compose. On the first startup do
-    
+
     $ docker-compose up
 
 On subsequent startups you can start with either
@@ -48,7 +49,7 @@ Or
 
 The second way of starting is using the script deploy.sh which also makes a [WatchTower](https://github.com/CenturyLinkLabs/watchtower#watchtower) container which makes sure that you are always running the latest version of BalticWeb.
 On the first startup using this method do
-	
+
 	$ chmod +x deploy.sh
 	$ chmod +x undeploy.sh
 	$ ./deploy.sh full
@@ -64,3 +65,6 @@ When you want to stop the containers do
 If you want to stop the containers and then remove them do
 
 	$ ./undeploy.sh full
+
+## NGINX configuration
+To configure the NGINX container you need to make a directory called 'nginx/conf.d' in your home directory. In this directory you can add custom NGINX configuration files.  
