@@ -17,7 +17,7 @@ full () {
 
     #create the containers and link them
     echo "Creating containers"
-    docker create --name db --net=baltic --restart=unless-stopped -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=embryo -e MYSQL_PASSWORD=embryo -e MYSQL_DATABASE=embryo mysql
+    docker create --name db --net=baltic --restart=unless-stopped -v $HOME/balticweb/mysql/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=embryo -e MYSQL_PASSWORD=embryo -e MYSQL_DATABASE=embryo mysql
 
     docker create --name couch --net=baltic --restart=unless-stopped -v $HOME/balticweb/couchdb:/data dmadk/embryo-couchdb
 
