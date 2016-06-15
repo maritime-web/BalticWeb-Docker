@@ -13,7 +13,7 @@ full () {
 
     #create a network called baltic
     echo "Creating network"
-    docker network create baltic 
+    docker network create baltic
 
     #create the containers and link them
     echo "Creating containers"
@@ -23,7 +23,7 @@ full () {
 
     docker create --name balticweb --net=baltic --restart=unless-stopped -p 8080:8080 -v $HOME/balticweb/properties:/opt/jboss/wildfly/balticweb_properties dmadk/balticweb
 
-    docker create --name watchtower --restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.sock centurylink/watchtower balticweb
+    docker create --name watchtower --restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.sock centurylink/watchtower balticweb --cleanup
 }
 
 $1
