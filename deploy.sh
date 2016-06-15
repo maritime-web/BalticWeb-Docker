@@ -23,7 +23,7 @@ full () {
 
     docker create --name balticweb --net=baltic --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -p 8080:8080 -v $HOME/balticweb/properties:/opt/jboss/wildfly/balticweb_properties dmadk/balticweb
 
-    docker create --name watchtower --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.sock centurylink/watchtower balticweb
+    docker create --name watchtower --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.sock centurylink/watchtower balticweb --cleanup
 }
 
 $1
