@@ -8,6 +8,7 @@ full ()
     echo "Removing containers"
     docker rm balticweb db couch
     docker network rm baltic
+    docker-compose -f logging/docker-compose.yml down
 }
 
 $1
