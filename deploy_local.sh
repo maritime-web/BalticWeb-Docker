@@ -28,9 +28,13 @@ full () {
 
 $1
 
+# start logging
+echo "Starting logging"
+docker-compose -f logging/docker-compose.yml up -d
+
 # start all containers
 echo "Starting containers"
-docker start db couch balticweb 
+docker start db couch balticweb
 # watchtower
 
 exit 0
