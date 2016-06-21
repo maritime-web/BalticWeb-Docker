@@ -17,9 +17,9 @@ full () {
 
     #create the containers and link them
     echo "Creating containers"
-    docker create --name db --net=baltic --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -v $HOME/balticweb/mysql/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=embryo -e MYSQL_PASSWORD=embryo -e MYSQL_DATABASE=embryo mysql
+    docker create --name db --net=baltic --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -v $HOME/balticweb/mysql/datadir:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=embryo -e MYSQL_PASSWORD=embryo -e MYSQL_DATABASE=embryo -p 3306:3306 mysql
 
-    docker create --name couch --net=baltic --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -v $HOME/balticweb/couchdb:/data dmadk/embryo-couchdb
+    docker create --name couch --net=baltic --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -v $HOME/balticweb/couchdb:/data  -p 5984:5984 dmadk/embryo-couchdb
 
     docker create --name balticweb --net=baltic --log-driver=fluentd --log-opt fluentd-async-connect=true --restart=unless-stopped -p 8080:8080 -v $HOME/balticweb/properties:/opt/jboss/wildfly/balticweb_properties dmadk/balticweb
 
@@ -29,7 +29,7 @@ full () {
 $1
 
 # start logging
-echo "Starting logging"
+echo "Stadorting logging"
 docker-compose -f logging/docker-compose.yml up -d
 
 # start all containers
