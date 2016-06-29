@@ -21,6 +21,8 @@ services:
       MYSQL_USER: embryo
       MYSQL_PASSWORD: embryo
       MYSQL_DATABASE: embryo
+    volumes:
+      - ~$USER/balticweb/mysql:/var/lib/mysql
   couchdb:
     image: dmadk/embryo-couchdb
     volumes:
