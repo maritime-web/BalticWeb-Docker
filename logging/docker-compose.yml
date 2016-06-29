@@ -3,7 +3,7 @@ services:
   elasticsearch:
     image: elasticsearch:latest
     volumes:
-      - ~$USER/elasticsearch:/usr/share/elasticsearch/data
+      - ~$USER/balticweb/elasticsearch:/usr/share/elasticsearch/data
     networks:
       - logger
   fluentd:
