@@ -1,5 +1,7 @@
 #!/bin/sh
-
+echo "┌┬┐┌─┐┌┐┌┬┌─┐┬ ┬  ┌┬┐┌─┐┬─┐┬┌┬┐┬┌┬┐┌─┐  ┌─┐┬ ┬┌┬┐┬ ┬┌─┐┬─┐┬┌┬┐┬ ┬";
+echo " ││├─┤││││└─┐├─┤  │││├─┤├┬┘│ │ ││││├┤   ├─┤│ │ │ ├─┤│ │├┬┘│ │ └┬┘";
+echo "─┴┘┴ ┴┘└┘┴└─┘┴ ┴  ┴ ┴┴ ┴┴└─┴ ┴ ┴┴ ┴└─┘  ┴ ┴└─┘ ┴ ┴ ┴└─┘┴└─┴ ┴  ┴ ";
 #script to create and deploy all containers needed for deployment of balticweb
 
 #pull images and create network and containers

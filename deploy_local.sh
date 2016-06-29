@@ -40,8 +40,8 @@ echo "Starting containers"
 docker start db couch balticweb
 
 # the web administrative DOCKER UI     
-docker rm mgmt-Docker-UI              
-docker run --name mgmt-Docker-UI -d -t -p 9999:9000 --privileged -v /var/run/docker.sock:/var/run/docker.sock uifd/ui-for-docker
+#docker rm mgmt-Docker-UI              
+docker run --name mgmt-Docker-UI -d --rm -p 9999:9000 --privileged -v /var/run/docker.sock:/var/run/docker.sock uifd/ui-for-docker
 
 echo "# watchtower - disabled";
 echo "# the web application (WILDFLY)                     http://localhost:8080";
