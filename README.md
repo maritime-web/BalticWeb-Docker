@@ -67,4 +67,4 @@ If you want to stop the containers and then remove them do
 	$ ./undeploy.sh full
 
 ## NGINX configuration
-To configure the NGINX container you need to make a directory called 'nginx/conf.d' in your home directory. In this directory you can add custom NGINX configuration files.  
+To configure the NGINX container you need to make a directory called 'nginx/conf.d' in your 'balticweb' directory. In this directory you can add custom NGINX configuration files.  
