@@ -41,12 +41,18 @@ docker start db couch balticweb
 
 # the web administrative DOCKER UI     
 #docker rm mgmt-Docker-UI              
-docker run --name mgmt-Docker-UI -d --rm -p 9999:9000 --privileged -v /var/run/docker.sock:/var/run/docker.sock uifd/ui-for-docker
+docker run --name mgmt-Docker-UI -d -p 9999:9000 --privileged -v /var/run/docker.sock:/var/run/docker.sock uifd/ui-for-docker
+
+# Cadvisor monitor and 
+docker run   --volume=/:/rootfs:ro   --volume=/var/run:/var/run:rw   --volume=/sys:/sys:ro   --volume=/var/lib/docker/:/var/lib/docker:ro   --publish=9998:8080   --detach=true   --name=mgmt-cadvisor  google/cadvisor:latest
+
 
 echo "# watchtower - disabled";
 echo "# the web application (WILDFLY)                     http://localhost:8080";
 echo "# the web administrative application (WILDFLY)      http://localhost:9990";
 echo "# the web administrative DOCKER UI                  http://localhost:9999";
+echo "# Cadvisor                                          http://localhost:9998";
+
 echo "# Couch DB                                          http://localhost:5984/_utils/index.html";
 echo "# MYSQL localhost:3306 use desktop client like mysql workbench";
 echo "# Logging user interface Kibana                     http://localhost:5601/app/kibana#/";

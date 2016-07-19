@@ -4,12 +4,20 @@ services:
     image: elasticsearch:latest
     volumes:
       - ~$USER/elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - '9200:9200'
   fluentd:
     build: fluentd/
     links:
       - elasticsearch
+    volumes:
+      - ~$USER/docker-logdata:/fluentd/log  
+      - ~$USER/docker-fluentd:/fluentd/etc
+    environment: 
+      - FLUENTD_CONF=myfluent.conf
     ports:
       - '24224:24224'
+      - '24220:24220'
   kibana:
     image: kibana:latest
     links:
